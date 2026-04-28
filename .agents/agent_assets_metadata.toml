@@ -60,6 +60,12 @@ uri = "file://artifacts/skincare-site/src/assets/images/support-pair.png"
 type = "image"
 title = "clinician and patient smiling"
 
+[[generated]]
+id = "21vx1P-Bh702njXGiizAc"
+uri = "file://artifacts/skincare-site/src/assets/images/product-tube.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "pax-UQXyJ7tHjGNe0rrxR"
 uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-40s_1.jpg"
