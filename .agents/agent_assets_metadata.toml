@@ -1,0 +1,121 @@
+uploads = []
+
+[[generated]]
+id = "gw2XhG6VskVg-8MBFLBqY"
+uri = "file://artifacts/skincare-site/src/assets/images/product-serum.png"
+type = "image"
+title = "Rx Tretinoin serum vial"
+
+[[generated]]
+id = "KtrNdAoT9SkFGPGVD5uYw"
+uri = "file://artifacts/skincare-site/src/assets/images/product-cream.png"
+type = "image"
+title = "peptide cream jar"
+
+[[generated]]
+id = "gFC0zcAxo1gbZALz9XPR0"
+uri = "file://artifacts/skincare-site/src/assets/images/product-tablets.png"
+type = "image"
+title = "anti-aging oral tablets"
+
+[[generated]]
+id = "-HUN4Q3GdcmRP6r-bQ3tQ"
+uri = "file://artifacts/skincare-site/src/assets/images/product-pen.png"
+type = "image"
+title = "prescription retinol pen"
+
+[[generated]]
+id = "4mL5CHlPW0VXgSPsjJ1dP"
+uri = "file://artifacts/skincare-site/src/assets/images/timeline-phone.png"
+type = "image"
+title = "phone in hand skincare app"
+
+[[generated]]
+id = "8IF_LLzpUJ1PeyGLOEV2J"
+uri = "file://artifacts/skincare-site/src/assets/images/timeline-doctor.png"
+type = "image"
+title = "dermatologist at desk"
+
+[[generated]]
+id = "p0Pv1iwk1ysaDnJoEadr7"
+uri = "file://artifacts/skincare-site/src/assets/images/timeline-box.png"
+type = "image"
+title = "package on doorstep"
+
+[[generated]]
+id = "F06WMCK1nePHsKXJ-QfQk"
+uri = "file://artifacts/skincare-site/src/assets/images/science-texture.png"
+type = "image"
+title = "glowing healthy skin texture"
+
+[[generated]]
+id = "i_lI7CRrm7nU9WZkItalQ"
+uri = "file://artifacts/skincare-site/src/assets/images/science-woman.png"
+type = "image"
+title = "radiant 50s woman"
+
+[[generated]]
+id = "lQ2gwxK30Izmjly6N6K7N"
+uri = "file://artifacts/skincare-site/src/assets/images/support-pair.png"
+type = "image"
+title = "clinician and patient smiling"
+
+[[outputs]]
+id = "pax-UQXyJ7tHjGNe0rrxR"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-40s_1.jpg"
+type = "image"
+title = "beautiful woman 40s glowing skin portrait close up"
+
+[[outputs]]
+id = "ct_o6hUOSpuzdzdwqayND"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-40s_2.jpg"
+type = "image"
+title = "beautiful woman 40s glowing skin portrait close up"
+
+[[outputs]]
+id = "vzsyvcOscYGLulKI_Zk3h"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-40s_3.jpg"
+type = "image"
+title = "beautiful woman 40s glowing skin portrait close up"
+
+[[outputs]]
+id = "oekiTPlydilo9wx8fY72b"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-40s_4.jpg"
+type = "image"
+title = "beautiful woman 40s glowing skin portrait close up"
+
+[[outputs]]
+id = "sqro5xjw1Yrjv4N4dFAp-"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/man-50s_1.jpg"
+type = "image"
+title = "handsome man 50s healthy skin portrait close up"
+
+[[outputs]]
+id = "7GiijDRsBXQrhodW-lns7"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/man-50s_2.jpg"
+type = "image"
+title = "handsome man 50s healthy skin portrait close up"
+
+[[outputs]]
+id = "S9AUZ626KT1Q3BLqXDNak"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/man-50s_3.jpg"
+type = "image"
+title = "handsome man 50s healthy skin portrait close up"
+
+[[outputs]]
+id = "QGBx1viYMHc9M2lM5VcVb"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-60s_1.jpg"
+type = "image"
+title = "elegant woman 60s radiant skin portrait close up"
+
+[[outputs]]
+id = "AtJY_Bp4SVWmbw7Rd5Vaz"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-60s_2.jpg"
+type = "image"
+title = "elegant woman 60s radiant skin portrait close up"
+
+[[outputs]]
+id = "I-ej8vswvaq8PAvCHS7GX"
+uri = "file://artifacts/skincare-site/src/assets/images/portraits/woman-60s_3.jpg"
+type = "image"
+title = "elegant woman 60s radiant skin portrait close up"
