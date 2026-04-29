@@ -10,7 +10,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col bg-background/80 backdrop-blur-md border-b border-border/50">
       {/* Promo Bar */}
       <div className="bg-brand text-white py-2 px-4 text-center text-sm font-medium tracking-wide">
-        Start your journey to luminous skin today. Enjoy 15% off your first month.
+        Calm your rosacea for good. Enjoy 15% off your first month.
       </div>
       
       {/* Main Nav */}

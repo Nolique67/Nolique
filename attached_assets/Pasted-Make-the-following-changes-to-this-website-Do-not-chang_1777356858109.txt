@@ -1,0 +1,185 @@
+Make the following changes to this website. Do not 
+change the design, layout, animations, or color 
+scheme. Only update the content listed below.
+
+1. BRAND NAME
+The logo and every mention across the entire site 
+currently says "Lumi" — change every single instance 
+to "Velara" including the logo, footer, guarantee 
+section, testimonials, and anywhere else it appears.
+
+2. HERO SECTION
+Change the headline to:
+"Clinical-grade skincare, prescribed for you."
+
+Change the subheadline to:
+"Physician-prescribed tretinoin formulas that 
+actually work. No waiting rooms. No dermatologist 
+appointments. Just real prescription results 
+delivered to your door."
+
+3. TREATMENTS SECTION
+This section should only show two treatment options:
+- "Prescription Tretinoin Formula" — The gold 
+standard for anti-aging. Clinically proven to reduce 
+fine lines, stimulate collagen, and smooth skin 
+texture. Personalized to your concentration and 
+tolerance.
+- "Custom 3-Ingredient Compound" — Tretinoin 
+combined with niacinamide and hyaluronic acid in one 
+formula. Treats fine lines, uneven tone, and skin 
+barrier damage simultaneously.
+
+Remove any other treatment cards.
+
+4. TESTIMONIAL QUOTE SECTION
+Change the large pull quote to:
+"I spent two years buying expensive retinol that did 
+nothing. Three months into my Velara prescription, 
+my skin has completely transformed."
+
+5. STATS SECTION
+Change the stats to:
+- 91% of patients report visible improvement within 
+90 days
+- 9/10 patients renew their prescription every month
+- Average provider response time: under 1 hour
+- Tretinoin is up to 20x stronger than OTC retinol
+
+6. HOW IT WORKS SECTION
+Change the steps to:
+Step 1 — "Complete Your Skin Profile"
+Fill out a short assessment and upload photos of 
+your skin in under 5 minutes.
+
+Step 2 — "Provider Review"
+A licensed dermatology provider reviews your profile 
+and writes your personalized prescription — average 
+response time under 1 hour. No video call required.
+
+Step 3 — "Delivered to Your Door"
+Your custom formula is compounded fresh at a 
+licensed US pharmacy and shipped free. Refills ship 
+automatically every 30 days.
+
+7. SUPPORT SECTION
+Change headline to:
+"Unlimited provider support, included."
+
+Change body copy to:
+"Your Velara provider is available throughout your 
+treatment. Ask questions, request formula 
+adjustments, and track your progress — all through 
+your secure patient portal."
+
+8. TESTIMONIALS SECTION
+Replace all reviews with these three:
+
+Review 1 — Sarah M., Age 42, Verified Patient:
+"I spent two years buying expensive retinol from 
+Sephora and saw almost nothing. Three months into 
+my Velara prescription and my skin texture has 
+completely changed. I wish I had done this sooner."
+
+Review 2 — Michelle T., Age 51, Verified Patient:
+"Getting a dermatologist appointment in my area 
+takes four months minimum. I had my prescription 
+in less than two hours with Velara. The formula is 
+incredible and the price is unbeatable."
+
+Review 3 — Karen L., Age 38, Verified Patient:
+"I was skeptical about online skincare but the 
+provider actually reviewed my photos and adjusted 
+my formula for my skin sensitivity. This feels 
+nothing like a generic subscription."
+
+9. PRICING SECTION
+If a pricing section exists, update it to show 
+exactly two plans:
+
+Starter — $39/month
+Includes: Single-ingredient tretinoin formula, 
+licensed provider review, free shipping, monthly 
+auto-refill, cancel anytime
+
+Complete — $46/month — label as "Most Popular"
+Includes: 3-ingredient compound (tretinoin + 
+niacinamide + hyaluronic acid), licensed provider 
+review, free shipping, monthly auto-refill, 
+cancel anytime
+
+Add this line below both cards:
+"HSA and FSA cards accepted. A consultation is 
+required before treatment begins."
+
+10. GUARANTEE SECTION
+Change to:
+"The Velara Clinical Guarantee — If your provider 
+determines you are not a candidate for prescription 
+treatment, your consultation fee is fully refunded. 
+No questions asked."
+
+11. FAQ SECTION
+Replace all FAQ questions and answers with these:
+
+Q: Is tretinoin really that different from retinol?
+A: Yes — significantly. Tretinoin is the active 
+form of vitamin A and works immediately at the 
+cellular level. Retinol must convert through 
+multiple steps in your skin before becoming active, 
+making it up to 20x weaker. Most people using OTC 
+retinol are not getting anywhere near the results 
+they would from a prescription-strength formula.
+
+Q: Do I need to see a doctor in person?
+A: No. Your licensed dermatology provider reviews 
+your skin profile and photos entirely online and 
+asynchronously. Most patients receive their 
+prescription within an hour of completing their 
+assessment.
+
+Q: Will my insurance cover this?
+A: Insurance does not typically cover compounded 
+prescription skincare for cosmetic use. However 
+Velara accepts HSA and FSA cards, which allows many 
+patients to use pre-tax dollars toward their 
+treatment.
+
+Q: What is the purging phase and will I experience 
+it?
+A: Some patients experience a temporary adjustment 
+period in the first 4 to 8 weeks where skin may 
+appear drier or slightly more sensitive as cellular 
+turnover accelerates. This is normal and expected. 
+Your provider will guide you through it and can 
+adjust your formula concentration if needed.
+
+Q: Can I cancel anytime?
+A: Yes. There are no long-term commitments. You can 
+pause or cancel your subscription at any time 
+through your patient portal.
+
+Q: What makes Velara different from Curology or 
+Musely?
+A: Velara offers a multi-ingredient compounded 
+formula at a flat monthly price that includes your 
+provider review and free shipping — no surprise 
+fees, no confusing tiers. Our providers specialize 
+in dermatology and your formula is personalized to 
+your specific skin profile, not a generic formula 
+assigned to everyone.
+
+12. FOOTER
+Change all brand references to Velara Health.
+Update copyright to: 2026 Velara Health, Inc. 
+All rights reserved.
+
+Update the disclaimer to:
+"Prescription products require an online 
+consultation with a licensed provider who will 
+determine if a prescription is appropriate. 
+Benefits and risks will be discussed. Individual 
+results may vary. Our affiliated pharmacies are 
+fully licensed and located in the United States. 
+Velara operates in compliance with all applicable 
+state telehealth regulations."

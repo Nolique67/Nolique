@@ -8,7 +8,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h2 className="font-serif text-3xl font-bold mb-4 text-brand-light">Lumé</h2>
             <p className="text-primary-foreground/70 text-sm mb-6 max-w-xs">
-              Prescription-strength skincare formulated by dermatologists, delivered to your door.
+              Prescription rosacea care formulated by dermatologists, delivered to your door.
             </p>
             <div className="space-y-2 text-sm text-primary-foreground/80">
               <p>support@joinlume.com</p>
@@ -20,10 +20,10 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-brand-light">Treatments</h3>
             <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li><a href="#" className="hover:text-white transition-colors">Rx Tretinoin Serum</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Peptide Firming Cream</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cellular Repair Tablets</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Retinol Pen</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Rx Metronidazole Gel</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Azelaic Acid 15% Cream</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Ivermectin Treatment</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Brimonidine Redness Relief</a></li>
             </ul>
           </div>
           
