@@ -22,7 +22,6 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-foreground/80">
           <a href="#how-it-works" className="hover:text-primary transition-colors">How it Works</a>
-          <a href="#products" className="hover:text-primary transition-colors">Treatments</a>
           <a href="#reviews" className="hover:text-primary transition-colors">Reviews</a>
           <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
         </nav>
@@ -47,7 +46,6 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-background border-t border-border/50 absolute top-full left-0 right-0 flex flex-col p-4 shadow-lg animate-in fade-in slide-in-from-top-2">
           <a href="#how-it-works" className="py-3 px-4 text-lg font-medium border-b border-border/30" onClick={() => setIsOpen(false)}>How it Works</a>
-          <a href="#products" className="py-3 px-4 text-lg font-medium border-b border-border/30" onClick={() => setIsOpen(false)}>Treatments</a>
           <a href="#reviews" className="py-3 px-4 text-lg font-medium border-b border-border/30" onClick={() => setIsOpen(false)}>Reviews</a>
           <a href="#faq" className="py-3 px-4 text-lg font-medium border-b border-border/30" onClick={() => setIsOpen(false)}>FAQ</a>
           <div className="flex flex-col gap-3 mt-6 px-4">

@@ -19,12 +19,9 @@ export function Footer() {
           
           <div>
             <h3 className="font-semibold mb-4 text-brand-light">Treatments</h3>
-            <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li><a href="#" className="hover:text-white transition-colors">Rx Metronidazole Gel</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Azelaic Acid 15% Cream</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Ivermectin Treatment</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Brimonidine Redness Relief</a></li>
-            </ul>
+            <a href="#" className="text-sm text-primary-foreground/80 hover:text-white transition-colors underline-offset-4 hover:underline">
+              Get Approved
+            </a>
           </div>
           
           <div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { CheckCircle2, Star, ShieldCheck, Truck, Stethoscope, BadgeDollarSign, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
+import { CheckCircle2, Star, ShieldCheck, Truck, Stethoscope, BadgeDollarSign, Sparkles, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -20,10 +20,6 @@ import p6 from "@/assets/images/portraits/woman-60s_1.jpg";
 import p7 from "@/assets/images/portraits/woman-60s_2.jpg";
 import p8 from "@/assets/images/portraits/woman-60s_3.jpg";
 
-import prodSerum from "@/assets/images/product-serum.png";
-import prodCream from "@/assets/images/product-cream.png";
-import prodTablets from "@/assets/images/product-tablets.png";
-import prodPen from "@/assets/images/product-pen.png";
 import prodTube from "@/assets/images/product-tube.png";
 
 import timePhone from "@/assets/images/timeline-phone.png";
@@ -196,76 +192,7 @@ export default function Home() {
         </Marquee>
       </section>
 
-      {/* 4. Treatment Showcase — no pricing, all funnel to Get Approved */}
-      <section id="products" className="py-24 px-6 max-w-7xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-          className="text-center mb-16"
-        >
-          <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-5xl text-primary mb-4">
-            Prescription rosacea treatments, <span className="text-brand italic">tailored to your skin</span>
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-foreground/70 max-w-2xl mx-auto text-lg">
-            We don't sell off-the-shelf creams. Take the assessment and your dermatologist builds a routine that targets your subtype.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {[
-            { name: "Rx Metronidazole Gel", img: prodSerum, desc: "Anti-inflammatory rosacea standard" },
-            { name: "Azelaic Acid 15% Cream", img: prodCream, desc: "Calms redness & evens tone" },
-            { name: "Ivermectin Treatment", img: prodTablets, desc: "Targets papules & pustules" },
-            { name: "Brimonidine Redness Relief", img: prodPen, desc: "Same-day vascular relief" },
-          ].map((prod, i) => (
-            <motion.div key={i} variants={fadeUp}>
-              <Card className="border-none shadow-sm hover:shadow-2xl transition-all duration-500 bg-brand-light/20 overflow-hidden group h-full">
-                <div className="p-6 h-64 flex items-center justify-center relative overflow-hidden bg-brand-light/40">
-                  <motion.img
-                    src={prod.img}
-                    alt={prod.name}
-                    className="h-full object-contain mix-blend-multiply"
-                    whileHover={{ scale: 1.08, rotate: -2 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-                <CardContent className="p-6 flex flex-col">
-                  <p className="text-sm text-brand font-medium mb-1">{prod.desc}</p>
-                  <h3 className="font-serif text-xl text-primary mb-4">{prod.name}</h3>
-                  <Button
-                    onClick={handleAction}
-                    variant="outline"
-                    className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary text-primary transition-all group/btn w-full"
-                  >
-                    Get Approved
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center text-sm text-foreground/50 mt-10 italic"
-        >
-          Final formulation determined by your prescribing dermatologist.
-        </motion.p>
-      </section>
-
-      {/* 5. Big Quote */}
+      {/* Big Quote */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
