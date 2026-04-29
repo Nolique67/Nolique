@@ -87,14 +87,14 @@ export default function Home() {
   return (
     <div className="w-full bg-background pt-24 overflow-hidden">
       {/* 1. Hero */}
-      <section className="relative max-w-7xl mx-auto px-6 py-12 md:py-24">
+      <section className="relative max-w-7xl mx-auto px-6 pt-12 pb-0 md:pt-20">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="text-center max-w-4xl mx-auto space-y-6 z-10 relative"
+          className="text-center max-w-4xl mx-auto space-y-6"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-brand-light text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-brand-light text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
@@ -102,7 +102,7 @@ export default function Home() {
             Trusted by 50,000+ patients calming rosacea for good
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.1] text-primary">
+          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.05] text-primary">
             Calm the redness, <span className="text-brand italic">restore your skin.</span>
           </motion.h1>
 
@@ -110,48 +110,47 @@ export default function Home() {
             Prescription rosacea treatments — metronidazole, azelaic acid, ivermectin and more — formulated by dermatologists and delivered to your door.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <ul className="text-left space-y-2 mb-6 sm:mb-0 sm:mr-8">
-              {["Rx-strength rosacea care", "Personalized by dermatologists", "Free shipping, always", "Cancel anytime"].map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-                  <CheckCircle2 className="w-4 h-4 text-brand" /> {item}
-                </li>
-              ))}
-            </ul>
-            <Button onClick={handleAction} size="lg" className="rounded-full px-12 py-8 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5">
+          <motion.ul variants={fadeUp} className="flex flex-wrap justify-center gap-x-6 gap-y-2 max-w-3xl mx-auto pt-2">
+            {["Rx-strength rosacea care", "Personalized by dermatologists", "Free shipping, always", "Cancel anytime"].map((item, i) => (
+              <li key={i} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
+                <CheckCircle2 className="w-4 h-4 text-brand" /> {item}
+              </li>
+            ))}
+          </motion.ul>
+
+          <motion.div variants={fadeUp} className="pt-4">
+            <Button onClick={handleAction} size="lg" className="rounded-full px-12 py-7 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5">
               Get Approved
             </Button>
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: -60, rotate: -12 }}
-          animate={{ opacity: 1, x: 0, rotate: -6 }}
-          transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-          className="hidden lg:block absolute left-0 top-32 w-64 h-80 rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <motion.img
-            src={heroWoman}
-            alt="Rosacea-free radiant woman"
-            className="w-full h-full object-cover object-center"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 60, rotate: 10 }}
-          animate={{ opacity: 1, x: 0, rotate: 4 }}
-          transition={{ duration: 1.1, delay: 0.5, ease: EASE }}
-          className="hidden lg:block absolute right-0 top-40 w-56 h-72 rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <motion.img
-            src={heroMan}
-            alt="Confident rosacea patient"
-            className="w-full h-full object-cover object-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
-        </motion.div>
+        {/* Portrait band — sits BELOW the text, never behind it */}
+        <div className="hidden md:flex justify-center items-end gap-4 lg:gap-6 mt-16 px-2">
+          {[
+            { img: heroWoman, alt: "Rosacea-free radiant woman", size: "w-44 lg:w-56 h-56 lg:h-72", offset: "-translate-y-2", delay: 0.2 },
+            { img: p2, alt: "Calm, even skin", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-6", delay: 0.35 },
+            { img: p4, alt: "Confident rosacea patient", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-2", delay: 0.5 },
+            { img: p6, alt: "Glowing patient", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-8", delay: 0.65 },
+            { img: heroMan, alt: "Smiling rosacea patient", size: "w-44 lg:w-56 h-56 lg:h-72", offset: "-translate-y-1", delay: 0.8 },
+          ].map((portrait, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: portrait.delay, ease: EASE }}
+              className={`${portrait.size} ${portrait.offset} rounded-3xl overflow-hidden shadow-xl shrink-0`}
+            >
+              <motion.img
+                src={portrait.img}
+                alt={portrait.alt}
+                className="w-full h-full object-cover object-center"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+              />
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* 2. Asymmetric Portrait Collage */}
