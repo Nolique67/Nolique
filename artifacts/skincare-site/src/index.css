@@ -64,45 +64,45 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* Blush / Cream / Espresso palette */
-  --background: 30 50% 98%; /* warm cream #faf8f5 */
-  --foreground: 20 20% 20%; /* dark espresso #3d3430 */
-  
-  --border: 30 20% 90%; 
-  
-  --card: 30 30% 99%; 
-  --card-foreground: 20 20% 20%;
-  --card-border: 30 20% 90%;
+  /* Nolique — Rose Mauve + Blush palette */
+  --background: 14 30% 97%;          /* barely-there warm rose-white */
+  --foreground: 348 28% 26%;         /* deep rose-mauve (replaces near-black) */
 
-  --popover: 30 30% 99%;
-  --popover-foreground: 20 20% 20%;
-  --popover-border: 30 20% 90%;
+  --border: 15 25% 88%;
+
+  --card: 14 30% 99%;
+  --card-foreground: 348 28% 26%;
+  --card-border: 15 25% 88%;
+
+  --popover: 14 30% 99%;
+  --popover-foreground: 348 28% 26%;
+  --popover-border: 15 25% 88%;
 
   /* Brand colors */
-  --brand: 15 40% 75%; /* soft blush #d9b3a3 */
-  --brand-light: 15 40% 90%; /* very light blush #f2e6e1 */
+  --brand: 12 42% 70%;               /* warm blush #cb9283 */
+  --brand-light: 14 45% 91%;         /* very light blush #f3e4df */
 
-  --primary: 20 20% 20%; /* espresso for primary CTA */
-  --primary-foreground: 30 50% 98%;
+  --primary: 348 28% 26%;            /* deep rose-mauve for CTAs & headlines */
+  --primary-foreground: 14 30% 97%;  /* light cream text on dark bg */
 
-  --secondary: 30 20% 90%; 
-  --secondary-foreground: 20 20% 20%;
+  --secondary: 15 25% 90%;
+  --secondary-foreground: 348 28% 26%;
 
-  --muted: 30 20% 94%;
-  --muted-foreground: 20 10% 40%;
+  --muted: 15 20% 93%;
+  --muted-foreground: 348 15% 50%;
 
-  --accent: 15 40% 90%; 
-  --accent-foreground: 20 20% 20%;
+  --accent: 14 45% 91%;
+  --accent-foreground: 348 28% 26%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 30 20% 85%;
-  --ring: 20 20% 20%;
+  --input: 15 20% 85%;
+  --ring: 348 28% 26%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
-  --radius: 1rem; 
+  --radius: 1rem;
 }
 
 @layer base {
@@ -113,7 +113,7 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }

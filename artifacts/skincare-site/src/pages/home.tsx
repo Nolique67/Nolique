@@ -59,12 +59,12 @@ const PRESS_LOGOS = [
 const TESTIMONIALS_TOP = [
   { name: "Terika", quote: "My provider was knowledgeable and helpful. She answered all my questions and made me feel as if this was not our first time meeting. I was very comfortable.", img: p1 },
   { name: "Marcus", quote: "Years of unexplained flushing. Within 6 weeks of starting my Rx my cheeks were a normal color again. Life-changing.", img: p4 },
-  { name: "Jamie", quote: "The questions are to the point and easy to navigate. I'm able to voice my concerns if needed and ask questions of Lumé. They are quick to respond and keep me updated on my prescription.", img: p2 },
+  { name: "Jamie", quote: "The questions are to the point and easy to navigate. I'm able to voice my concerns if needed and ask questions of Nolique. They are quick to respond and keep me updated on my prescription.", img: p2 },
   { name: "Annette", quote: "I'd given up on rosacea creams. The personalized formula my dermatologist sent actually calms my skin instead of burning it.", img: p7 },
 ];
 
 const TESTIMONIALS_BOTTOM = [
-  { name: "Lou-Ann", quote: "Lumé doctors & staff have been very professional and prompt with any questions I have and their support & care. I feel in great hands! My redness has improved dramatically and I requested to stay on a maintenance dose.", img: p3 },
+  { name: "Lou-Ann", quote: "Nolique doctors & staff have been very professional and prompt with any questions I have and their support & care. I feel in great hands! My redness has improved dramatically and I requested to stay on a maintenance dose.", img: p3 },
   { name: "Elizabeth", quote: "My clinician was kind, informative, gave a clear understanding of expectations, what was needed and future follow ups and dosage changes. Very easy to understand and helpful.", img: p6 },
   { name: "Devon", quote: "The bumps and pustules I'd been hiding for two years are gone. I haven't worn full coverage foundation in months.", img: p5 },
   { name: "Priya", quote: "Easy intake, fast shipping, and a real human dermatologist who actually reads your photos. Worth every penny.", img: p8 },
@@ -86,67 +86,91 @@ export default function Home() {
 
   return (
     <div className="w-full bg-background pt-24 overflow-hidden">
-      {/* 1. Hero */}
-      <section className="relative max-w-7xl mx-auto px-6 pt-12 pb-0 md:pt-20">
+      {/* 1. Hero — MEDVi-style: side portraits flank centered content */}
+      <section className="relative w-full overflow-hidden pt-10 md:pt-16">
+        {/* Side portraits — absolutely positioned at edges, tall, partially cropped */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.0, delay: 0.4, ease: EASE }}
+          className="hidden lg:block absolute left-0 top-8 w-52 xl:w-64 h-[480px] xl:h-[540px] rounded-r-3xl overflow-hidden shadow-2xl z-10"
+        >
+          <motion.img src={heroWoman} alt="Rosacea-free patient" className="w-full h-full object-cover object-top"
+            animate={{ y: [0, -8, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.0, delay: 0.6, ease: EASE }}
+          className="hidden lg:block absolute right-0 top-8 w-52 xl:w-64 h-[480px] xl:h-[540px] rounded-l-3xl overflow-hidden shadow-2xl z-10"
+        >
+          <motion.img src={heroMan} alt="Confident Nolique patient" className="w-full h-full object-cover object-top"
+            animate={{ y: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+        </motion.div>
+
+        {/* Centered text column */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="text-center max-w-4xl mx-auto space-y-6"
+          className="relative z-20 max-w-2xl mx-auto px-6 text-center space-y-5"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-brand-light text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-2">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-brand-light text-primary px-4 py-1.5 rounded-full text-sm font-medium">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
             </span>
-            Trusted by 50,000+ patients calming rosacea for good
+            Join 50,000+ Nolique patients calming rosacea for good
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.05] text-primary">
+          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] text-primary">
             Calm the redness, <span className="text-brand italic">restore your skin.</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto">
-            Prescription rosacea treatments — metronidazole, azelaic acid, ivermectin and more — formulated by dermatologists and delivered to your door.
-          </motion.p>
-
-          <motion.ul variants={fadeUp} className="flex flex-wrap justify-center gap-x-6 gap-y-2 max-w-3xl mx-auto pt-2">
-            {["Rx-strength rosacea care", "Personalized by dermatologists", "Free shipping, always", "Cancel anytime"].map((item, i) => (
-              <li key={i} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-                <CheckCircle2 className="w-4 h-4 text-brand" /> {item}
+          <motion.ul variants={fadeUp} className="inline-flex flex-col items-start gap-2.5 text-left mt-2">
+            {[
+              "Rx-strength rosacea treatment",
+              "Personalized by dermatologists",
+              "No hidden fees — free shipping always",
+              "HSA/FSA Approved",
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-2.5 text-sm font-medium text-foreground/80">
+                <CheckCircle2 className="w-4 h-4 text-brand shrink-0" /> {item}
               </li>
             ))}
           </motion.ul>
 
-          <motion.div variants={fadeUp} className="pt-4">
-            <Button onClick={handleAction} size="lg" className="rounded-full px-12 py-7 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5">
-              Get Approved
+          <motion.div variants={fadeUp} className="pt-3">
+            <Button
+              onClick={handleAction}
+              size="lg"
+              className="rounded-full px-14 py-7 text-base font-semibold uppercase tracking-widest bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+            >
+              Am I Qualified?
             </Button>
           </motion.div>
         </motion.div>
 
-        {/* Portrait band — sits BELOW the text, never behind it */}
-        <div className="hidden md:flex justify-center items-end gap-4 lg:gap-6 mt-16 px-2">
+        {/* Bottom portrait row — 3 cards centered below content, like MEDVi */}
+        <div className="relative z-20 flex justify-center items-end gap-4 mt-14 px-6 pb-0">
           {[
-            { img: heroWoman, alt: "Rosacea-free radiant woman", size: "w-44 lg:w-56 h-56 lg:h-72", offset: "-translate-y-2", delay: 0.2 },
-            { img: p2, alt: "Calm, even skin", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-6", delay: 0.35 },
-            { img: p4, alt: "Confident rosacea patient", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-2", delay: 0.5 },
-            { img: p6, alt: "Glowing patient", size: "w-36 lg:w-44 h-48 lg:h-60", offset: "translate-y-8", delay: 0.65 },
-            { img: heroMan, alt: "Smiling rosacea patient", size: "w-44 lg:w-56 h-56 lg:h-72", offset: "-translate-y-1", delay: 0.8 },
-          ].map((portrait, i) => (
+            { img: p2, h: "h-52 md:h-64", mt: "mt-8" },
+            { img: p4, h: "h-60 md:h-72", mt: "mt-0" },
+            { img: p6, h: "h-52 md:h-64", mt: "mt-8" },
+          ].map((p, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: portrait.delay, ease: EASE }}
-              className={`${portrait.size} ${portrait.offset} rounded-3xl overflow-hidden shadow-xl shrink-0`}
+              transition={{ duration: 0.8, delay: 0.5 + i * 0.15, ease: EASE }}
+              className={`w-36 md:w-48 ${p.h} ${p.mt} rounded-3xl overflow-hidden shadow-xl shrink-0`}
             >
               <motion.img
-                src={portrait.img}
-                alt={portrait.alt}
-                className="w-full h-full object-cover object-center"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+                src={p.img}
+                alt="Nolique patient"
+                className="w-full h-full object-cover object-top"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
               />
             </motion.div>
           ))}
@@ -227,7 +251,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="font-serif text-4xl md:text-6xl leading-tight mb-8"
           >
-            "I tried every cream at the counter for my rosacea. When nothing else worked, <span className="text-brand-light italic">Lumé did.</span>"
+            "I tried every cream at the counter for my rosacea. When nothing else worked, <span className="text-brand-light italic">Nolique did.</span>"
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -236,7 +260,7 @@ export default function Home() {
             transition={{ delay: 0.5 }}
             className="text-lg text-primary-foreground/70"
           >
-            — Sarah T., 48, Verified Lumé Patient
+            — Sarah T., 48, Verified Nolique Patient
           </motion.p>
         </div>
       </motion.section>
@@ -278,7 +302,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-2 mt-2 opacity-30">
                   <CheckCircle2 className="w-3 h-3 text-brand" />
-                  <span className="text-[10px] uppercase tracking-wider text-foreground/40">Verified Lumé Patient</span>
+                  <span className="text-[10px] uppercase tracking-wider text-foreground/40">Verified Nolique Patient</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -304,7 +328,7 @@ export default function Home() {
           />
           <motion.img
             src={prodTube}
-            alt="Lumé Prescription Rosacea Treatment"
+            alt="Nolique Prescription Rosacea Treatment"
             className="h-[460px] md:h-[560px] object-contain relative z-10 drop-shadow-2xl"
             animate={{ y: [0, -16, 0], rotate: [0, 1.5, 0, -1.5, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -453,7 +477,7 @@ export default function Home() {
             ))}
           </motion.div>
           <p className="text-xs text-foreground/50 mt-6 text-center italic">
-            * Data based on Lumé patients over their first 6 months of treatment.
+            * Data based on Nolique patients over their first 6 months of treatment.
           </p>
         </div>
       </section>
@@ -608,7 +632,7 @@ export default function Home() {
               Unlimited 24/7 support <span className="text-brand italic">included.</span>
             </h2>
             <p className="text-lg text-foreground/70 leading-relaxed">
-              Lumé provides 24/7 access to a dedicated team of dermatology specialists, ensuring you have the support you need <span className="text-brand font-semibold">around the clock</span>. With unlimited appointments, messaging and support, you can confidently reach out for guidance, ask questions, or address flare-ups any time.
+              Nolique provides 24/7 access to a dedicated team of dermatology specialists, ensuring you have the support you need <span className="text-brand font-semibold">around the clock</span>. With unlimited appointments, messaging and support, you can confidently reach out for guidance, ask questions, or address flare-ups any time.
             </p>
             <Button onClick={handleAction} size="lg" className="rounded-full px-10 py-6 text-base bg-primary hover:-translate-y-0.5 transition-all">
               <MessageCircle className="w-5 h-5 mr-2" /> Get Approved
@@ -625,7 +649,7 @@ export default function Home() {
             >
               <motion.img
                 src={sciWoman}
-                alt="Lumé dermatologist"
+                alt="Nolique dermatologist"
                 className="w-full h-full object-cover"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -640,7 +664,7 @@ export default function Home() {
             >
               <motion.img
                 src={supPair}
-                alt="Patient holding Lumé treatment"
+                alt="Patient holding Nolique treatment"
                 className="w-full h-full object-cover"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -757,7 +781,7 @@ export default function Home() {
           >
             <Accordion type="single" collapsible className="w-full space-y-4">
               {[
-                { q: "What kinds of rosacea does Lumé treat?", a: "Our dermatologists treat all four rosacea subtypes: erythematotelangiectatic (redness & flushing), papulopustular (bumps & pustules), phymatous (skin thickening), and ocular rosacea symptoms. Your assessment will route you to the right protocol." },
+                { q: "What kinds of rosacea does Nolique treat?", a: "Our dermatologists treat all four rosacea subtypes: erythematotelangiectatic (redness & flushing), papulopustular (bumps & pustules), phymatous (skin thickening), and ocular rosacea symptoms. Your assessment will route you to the right protocol." },
                 { q: "Will it work for my sensitive skin?", a: "Yes. Our dermatologists customize the concentration and combination of active ingredients based on your skin's tolerance, so you can calm rosacea without burning, stinging, or making it worse." },
                 { q: "Do you accept insurance?", a: "While we don't bill insurance directly for the medications, our services are HSA/FSA eligible, and we provide receipts you can submit for reimbursement." },
                 { q: "What side effects should I expect?", a: "When starting prescription rosacea treatments, some patients experience mild dryness or temporary redness for 1-2 weeks. Your provider will guide you through minimizing these effects with the right barrier repair cream." },
