@@ -1,31 +1,28 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { motion, type Variants } from "framer-motion";
-import { CheckCircle2, Star, ShieldCheck, Truck, Stethoscope, BadgeDollarSign, Sparkles, MessageCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  ShieldCheck,
+  Truck,
+  Users,
+  BadgeDollarSign,
+  MessageCircle,
+  ArrowRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { CountUp } from "@/components/animated/count-up";
-import { Marquee } from "@/components/animated/marquee";
-
-import heroWoman from "@/assets/images/portraits/woman-40s_1.jpg";
-import heroMan from "@/assets/images/portraits/man-50s_1.jpg";
-import p1 from "@/assets/images/portraits/woman-40s_2.jpg";
-import p2 from "@/assets/images/portraits/woman-40s_3.jpg";
-import p3 from "@/assets/images/portraits/woman-40s_4.jpg";
-import p4 from "@/assets/images/portraits/man-50s_2.jpg";
-import p5 from "@/assets/images/portraits/man-50s_3.jpg";
-import p6 from "@/assets/images/portraits/woman-60s_1.jpg";
-import p7 from "@/assets/images/portraits/woman-60s_2.jpg";
-import p8 from "@/assets/images/portraits/woman-60s_3.jpg";
-
-import prodTube from "@/assets/images/product-tube.png";
 
 import timePhone from "@/assets/images/timeline-phone.png";
 import timeDoctor from "@/assets/images/timeline-doctor.png";
 import timeBox from "@/assets/images/timeline-box.png";
-
 import sciTexture from "@/assets/images/science-texture.png";
 import sciWoman from "@/assets/images/science-woman.png";
 import supPair from "@/assets/images/support-pair.png";
@@ -42,97 +39,45 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-const PRESS_LOGOS = [
-  { text: "Forbes", className: "font-serif text-3xl tracking-tight" },
-  { text: "healthline", className: "font-sans font-bold text-2xl tracking-tight lowercase" },
-  { text: "WebMD", className: "font-sans font-extrabold text-2xl tracking-tight" },
-  { text: "FORTUNE", className: "font-serif font-black text-2xl tracking-widest" },
-  { text: "FAST COMPANY", className: "font-sans font-extrabold text-2xl tracking-tight" },
-  { text: "The New York Times", className: "font-serif italic text-2xl" },
-  { text: "Bloomberg", className: "font-serif font-semibold text-2xl tracking-tight" },
-  { text: "VOGUE", className: "font-serif text-3xl tracking-[0.15em]" },
-  { text: "ALLURE", className: "font-sans font-black text-2xl tracking-tighter" },
-  { text: "Harper's BAZAAR", className: "font-serif italic text-2xl" },
-  { text: "ELLE", className: "font-sans font-medium text-3xl tracking-[0.4em]" },
-];
-
-const TESTIMONIALS_TOP = [
-  { name: "Terika", quote: "My provider was knowledgeable and helpful. She answered all my questions and made me feel as if this was not our first time meeting. I was very comfortable.", img: p1 },
-  { name: "Marcus", quote: "Years of unexplained flushing. Within 6 weeks of starting my Rx my cheeks were a normal color again. Life-changing.", img: p4 },
-  { name: "Jamie", quote: "The questions are to the point and easy to navigate. I'm able to voice my concerns if needed and ask questions of Nolique. They are quick to respond and keep me updated on my prescription.", img: p2 },
-  { name: "Annette", quote: "I'd given up on rosacea creams. The personalized formula my dermatologist sent actually calms my skin instead of burning it.", img: p7 },
-];
-
-const TESTIMONIALS_BOTTOM = [
-  { name: "Lou-Ann", quote: "Nolique doctors & staff have been very professional and prompt with any questions I have and their support & care. I feel in great hands! My redness has improved dramatically and I requested to stay on a maintenance dose.", img: p3 },
-  { name: "Elizabeth", quote: "My clinician was kind, informative, gave a clear understanding of expectations, what was needed and future follow ups and dosage changes. Very easy to understand and helpful.", img: p6 },
-  { name: "Devon", quote: "The bumps and pustules I'd been hiding for two years are gone. I haven't worn full coverage foundation in months.", img: p5 },
-  { name: "Priya", quote: "Easy intake, fast shipping, and a real human dermatologist who actually reads your photos. Worth every penny.", img: p8 },
-];
-
 export default function Home() {
-  const { toast } = useToast();
+  const [, navigate] = useLocation();
   const [redness, setRedness] = useState([6]);
   const [quizSelection, setQuizSelection] = useState<string | null>(null);
 
-  const handleAction = () => {
-    toast({
-      title: "Taking you to intake",
-      description: "Redirecting to your rosacea assessment...",
-    });
-  };
+  const handleAction = () => navigate("/apply");
 
   const reductionPct = Math.min(82, 30 + redness[0] * 6);
 
   return (
     <div className="w-full bg-background pt-24 overflow-hidden">
-      {/* 1. Hero — MEDVi-style: side portraits flank centered content */}
-      <section className="relative w-full overflow-hidden pt-10 md:pt-16">
-        {/* Side portraits — absolutely positioned at edges, tall, partially cropped */}
-        <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.0, delay: 0.4, ease: EASE }}
-          className="hidden lg:block absolute left-0 top-8 w-52 xl:w-64 h-[480px] xl:h-[540px] rounded-r-3xl overflow-hidden shadow-2xl z-10"
-        >
-          <motion.img src={heroWoman} alt="Rosacea-free patient" className="w-full h-full object-cover object-top"
-            animate={{ y: [0, -8, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.0, delay: 0.6, ease: EASE }}
-          className="hidden lg:block absolute right-0 top-8 w-52 xl:w-64 h-[480px] xl:h-[540px] rounded-l-3xl overflow-hidden shadow-2xl z-10"
-        >
-          <motion.img src={heroMan} alt="Confident Nolique patient" className="w-full h-full object-cover object-top"
-            animate={{ y: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
-        </motion.div>
 
-        {/* Centered text column */}
+      {/* ── Hero ───────────────────────────────────────────────────── */}
+      <section className="w-full pt-10 md:pt-24 pb-16">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="relative z-20 max-w-2xl mx-auto px-6 text-center space-y-5"
+          className="max-w-2xl mx-auto px-6 text-center space-y-5"
         >
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-brand-light text-primary px-4 py-1.5 rounded-full text-sm font-medium">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
             </span>
-            Join 50,000+ Nolique patients calming rosacea for good
+            Connecting patients with licensed rosacea specialists
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] text-primary">
-            Calm the redness, <span className="text-brand italic">restore your skin.</span>
+            Rosacea care from real physicians,{" "}
+            <span className="text-brand italic">without the wait.</span>
           </motion.h1>
 
           <motion.ul variants={fadeUp} className="inline-flex flex-col items-start gap-2.5 text-left mt-2">
             {[
-              "Rx-strength rosacea treatment",
-              "Personalized by dermatologists",
-              "No hidden fees — free shipping always",
-              "HSA/FSA Approved",
+              "Submit your intake form online in minutes",
+              "A licensed physician reviews your case",
+              "Prescription treatment shipped to your door",
+              "HSA / FSA Eligible",
             ].map((item, i) => (
               <li key={i} className="flex items-center gap-2.5 text-sm font-medium text-foreground/80">
                 <CheckCircle2 className="w-4 h-4 text-brand shrink-0" /> {item}
@@ -146,76 +91,13 @@ export default function Home() {
               size="lg"
               className="rounded-full px-14 py-7 text-base font-semibold uppercase tracking-widest bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
             >
-              Am I Qualified?
+              See If You Qualify
             </Button>
           </motion.div>
         </motion.div>
-
-        {/* Bottom portrait row — 3 cards centered below content, like MEDVi */}
-        <div className="relative z-20 flex justify-center items-end gap-4 mt-14 px-6 pb-0">
-          {[
-            { img: p2, h: "h-52 md:h-64", mt: "mt-8" },
-            { img: p4, h: "h-60 md:h-72", mt: "mt-0" },
-            { img: p6, h: "h-52 md:h-64", mt: "mt-8" },
-          ].map((p, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 + i * 0.15, ease: EASE }}
-              className={`w-36 md:w-48 ${p.h} ${p.mt} rounded-3xl overflow-hidden shadow-xl shrink-0`}
-            >
-              <motion.img
-                src={p.img}
-                alt="Nolique patient"
-                className="w-full h-full object-cover object-top"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-              />
-            </motion.div>
-          ))}
-        </div>
       </section>
 
-      {/* 2. Asymmetric Portrait Collage */}
-      <section className="py-12 w-full overflow-hidden bg-brand-light/30">
-        <div className="flex gap-4 md:gap-6 px-4 md:px-0 -ml-12 md:-ml-24 w-[150vw] md:w-[120vw]">
-          {[p1, p2, p3, p4, p5, p6, p7].map((img, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: EASE }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-              className={`relative overflow-hidden rounded-3xl shadow-sm hover:shadow-xl transition-shadow shrink-0 ${
-                i % 2 === 0 ? "w-48 md:w-64 h-64 md:h-80 mt-8" : "w-56 md:w-72 h-72 md:h-96 mb-8"
-              }`}
-            >
-              <img src={img} alt="Customer" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500" />
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. Press Logo Marquee — slides left */}
-      <section className="py-14 border-b border-border/50 bg-background">
-        <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold text-foreground/50">Proud to be featured and advertised in</p>
-        </div>
-        <Marquee duration={40} className="[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          {PRESS_LOGOS.map((logo, i) => (
-            <span
-              key={i}
-              className={`${logo.className} text-foreground/40 hover:text-foreground/70 transition-colors mx-12 whitespace-nowrap`}
-            >
-              {logo.text}
-            </span>
-          ))}
-        </Marquee>
-      </section>
-
-      {/* Big Quote */}
+      {/* ── Mission ────────────────────────────────────────────────── */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -223,134 +105,29 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="py-24 bg-primary text-primary-foreground px-6 text-center"
       >
-        <div className="max-w-4xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-sm uppercase tracking-widest text-primary-foreground/60 mb-6"
+        <div className="max-w-4xl mx-auto space-y-6">
+          <p className="text-sm uppercase tracking-widest text-primary-foreground/60">What We Do</p>
+          <h2 className="font-serif text-4xl md:text-6xl leading-tight">
+            We connect you with the right physician.{" "}
+            <span className="text-brand-light italic">They handle the rest.</span>
+          </h2>
+          <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
+            Nolique is a telehealth platform — we make it simple to submit your
+            rosacea intake, get matched with a licensed physician who reviews
+            your case, and receive your prescription treatment at home. We're
+            the platform. The physicians are independent, licensed professionals.
+          </p>
+          <Button
+            onClick={handleAction}
+            variant="outline"
+            className="rounded-full bg-transparent border-white text-white hover:bg-white hover:text-primary mt-4 hover:-translate-y-0.5 transition-all"
           >
-            10,000+ Patients Agree
-          </motion.p>
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-            className="flex justify-center gap-1 mb-8"
-          >
-            {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="w-6 h-6 fill-brand text-brand" />
-            ))}
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="font-serif text-4xl md:text-6xl leading-tight mb-8"
-          >
-            "I tried every cream at the counter for my rosacea. When nothing else worked, <span className="text-brand-light italic">Nolique did.</span>"
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="text-lg text-primary-foreground/70"
-          >
-            — Sarah T., 48, Verified Nolique Patient
-          </motion.p>
+            Start Your Intake <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
       </motion.section>
 
-      {/* 6. Animated Tube + Floating Testimonial Cloud */}
-      <section className="py-32 px-6 relative overflow-hidden max-w-7xl mx-auto min-h-[760px] flex items-center justify-center">
-        {[
-          { text: "My cheeks finally look like mine again.", top: "8%", left: "4%", rotate: -3, delay: 0, duration: 7 },
-          { text: "...the redness vanished!", top: "16%", right: "6%", rotate: 4, delay: 0.4, duration: 8 },
-          { text: "Everyone notices my calm, even skin.", top: "42%", left: "2%", rotate: 2, delay: 0.8, duration: 9 },
-          { text: "Very kind and informative Dr. Quick and easy!", top: "58%", left: "8%", rotate: -2, delay: 0.2, duration: 7.5 },
-          { text: "Every person I've talked to has been so thoughtful.", top: "44%", right: "3%", rotate: -4, delay: 0.6, duration: 8.5 },
-          { text: "NP was very helpful and friendly!", bottom: "22%", right: "8%", rotate: 3, delay: 1.0, duration: 7 },
-          { text: "The team takes care of everything — no flare-up panic.", bottom: "10%", left: "10%", rotate: 1, delay: 0.5, duration: 9 },
-          { text: "Real, lasting calm in 12 weeks.", bottom: "8%", right: "16%", rotate: -2, delay: 0.7, duration: 8 },
-        ].map((quote, i) => {
-          const positionStyle: React.CSSProperties = {};
-          if (quote.top) positionStyle.top = quote.top;
-          if (quote.bottom) positionStyle.bottom = quote.bottom;
-          if (quote.left) positionStyle.left = quote.left;
-          if (quote.right) positionStyle.right = quote.right;
-
-          return (
-            <motion.div
-              key={i}
-              className="absolute hidden md:block max-w-[260px] pointer-events-none select-none"
-              style={positionStyle}
-              initial={{ opacity: 0, scale: 0.7, rotate: quote.rotate * 2 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: quote.rotate }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.1, delay: quote.delay, ease: EASE }}
-            >
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: quote.duration, repeat: Infinity, ease: "easeInOut", delay: quote.delay }}
-              >
-                <p className="font-serif text-2xl lg:text-3xl text-foreground/25 leading-tight italic">
-                  "{quote.text}"
-                </p>
-                <div className="flex items-center gap-2 mt-2 opacity-30">
-                  <CheckCircle2 className="w-3 h-3 text-brand" />
-                  <span className="text-[10px] uppercase tracking-wider text-foreground/40">Verified Nolique Patient</span>
-                </div>
-              </motion.div>
-            </motion.div>
-          );
-        })}
-
-        <motion.div
-          initial={{ opacity: 0, y: 80, scale: 0.8 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1.4, ease: EASE }}
-          className="z-10 relative"
-        >
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[520px] rounded-full bg-brand/40 blur-[100px]"
-            animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[340px] rounded-full bg-brand-light/80 blur-3xl"
-            animate={{ scale: [1.05, 0.95, 1.05] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.img
-            src={prodTube}
-            alt="Nolique Prescription Rosacea Treatment"
-            className="h-[460px] md:h-[560px] object-contain relative z-10 drop-shadow-2xl"
-            animate={{ y: [0, -16, 0], rotate: [0, 1.5, 0, -1.5, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-12 -right-4 z-20 text-brand"
-            animate={{ scale: [0, 1, 0], rotate: [0, 180, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          >
-            <Sparkles className="w-8 h-8" />
-          </motion.div>
-          <motion.div
-            className="absolute bottom-20 -left-6 z-20 text-brand"
-            animate={{ scale: [0, 1, 0], rotate: [0, -180, -360] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          >
-            <Sparkles className="w-6 h-6" />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* 7. Interactive Slider — animated count */}
+      {/* ── Redness Slider ─────────────────────────────────────────── */}
       <section className="py-24 bg-brand-light/30 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -364,13 +141,16 @@ export default function Home() {
               <ShieldCheck className="w-4 h-4" /> HSA / FSA Eligible
             </div>
             <h2 className="font-serif text-3xl md:text-5xl text-primary leading-tight">
-              Want to <span className="text-brand italic">calm your redness</span> for good?
+              Not sure if you qualify?{" "}
+              <span className="text-brand italic">Let's find out.</span>
             </h2>
             <p className="text-foreground/70 text-lg">
-              It's not magic — it's <span className="text-brand font-semibold">dermatology science</span>. Personalized prescription rosacea care that targets the actual triggers behind your flare-ups, not just the symptoms.
+              Tell us about your rosacea. Our intake form takes about 3 minutes
+              and a licensed physician will review whether prescription treatment
+              is right for you — at no charge to find out.
             </p>
             <Button onClick={handleAction} size="lg" className="rounded-full px-10 py-6 text-base bg-primary hover:-translate-y-0.5 transition-all">
-              Get Approved
+              Start Free Intake
             </Button>
           </motion.div>
 
@@ -384,105 +164,25 @@ export default function Home() {
             <div className="flex justify-between items-end mb-6 gap-4">
               <div>
                 <p className="text-sm text-foreground/60 font-medium mb-1">Current redness severity:</p>
-                <p className="text-3xl md:text-4xl font-serif text-primary">{redness[0]} <span className="text-lg text-foreground/50 font-sans">/ 10</span></p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-brand font-medium mb-1">Potential reduction:</p>
-                <p className="text-4xl md:text-5xl font-serif text-brand">
-                  <CountUp to={reductionPct} duration={1.4} suffix="%" />
+                <p className="text-3xl md:text-4xl font-serif text-primary">
+                  {redness[0]} <span className="text-lg text-foreground/50 font-sans">/ 10</span>
                 </p>
               </div>
+              <div className="text-right">
+                <p className="text-sm text-brand font-medium mb-1">Potential reduction*:</p>
+                <p className="text-4xl md:text-5xl font-serif text-brand">{reductionPct}%</p>
+              </div>
             </div>
-
-            <Slider
-              value={redness}
-              onValueChange={setRedness}
-              max={10}
-              min={1}
-              step={1}
-              className="py-4"
-            />
-
-            <Button onClick={handleAction} className="w-full mt-8 rounded-full py-6 text-lg bg-primary hover:bg-primary/90 hover:-translate-y-0.5 transition-all">
-              Find My Routine
+            <Slider value={redness} onValueChange={setRedness} max={10} min={1} step={1} className="py-4" />
+            <p className="text-xs text-foreground/40 mt-2 italic">* Based on published clinical data for prescription rosacea treatments. Individual results vary.</p>
+            <Button onClick={handleAction} className="w-full mt-6 rounded-full py-6 text-lg bg-primary hover:bg-primary/90 hover:-translate-y-0.5 transition-all">
+              See If I Qualify
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* 8. 8-Portrait Grid */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="font-serif text-4xl md:text-5xl text-primary text-center mb-16"
-        >
-          The clear, calm skin we've all been <span className="text-brand italic">waiting for</span>
-        </motion.h2>
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
-        >
-          {[p8, p2, p4, p6, p1, p7, p3, p5].map((img, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, scale: 0.85, y: 30 },
-                visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
-              }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-shadow"
-            >
-              <img src={img} alt="Happy patient" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* 9. Light Stat Row — gold checkmarks (replaces dark science section) */}
-      <section className="py-20 bg-brand-light/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              { num: 6, suffix: "x", label: "more effective than OTC rosacea creams" },
-              { num: 82, suffix: "%", label: "of patients see visible redness reduction" },
-              { num: 93, suffix: "%", label: "kept their skin clear long-term" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className="flex items-center gap-4 bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-sm"
-              >
-                <div className="w-12 h-12 rounded-full bg-brand/20 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-7 h-7 text-brand" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-3xl text-primary">
-                    <CountUp to={stat.num} duration={1.6} suffix={stat.suffix} />
-                  </h3>
-                  <p className="text-foreground/70 text-sm">{stat.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-          <p className="text-xs text-foreground/50 mt-6 text-center italic">
-            * Data based on Nolique patients over their first 6 months of treatment.
-          </p>
-        </div>
-      </section>
-
-      {/* 10. Science Story */}
+      {/* ── About Rosacea ──────────────────────────────────────────── */}
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -494,13 +194,22 @@ export default function Home() {
               className="space-y-6"
             >
               <h2 className="font-serif text-4xl md:text-5xl leading-tight">
-                We don't just hide redness. <span className="text-brand-light italic">We treat the cause.</span>
+                Rosacea is a medical condition.{" "}
+                <span className="text-brand-light italic">It deserves medical treatment.</span>
               </h2>
               <p className="text-lg text-primary-foreground/80 leading-relaxed">
-                Rosacea isn't a cosmetic problem — it's a chronic inflammatory condition driven by vascular reactivity, demodex mites, and an impaired skin barrier. Our prescription protocols target every layer at once: anti-inflammatories to quiet flare-ups, antiparasitics to clear papules, and barrier repair to keep your skin calm long after treatment.
+                Over-the-counter creams can't address the underlying inflammatory
+                and vascular causes of rosacea. Prescription treatments — reviewed
+                and prescribed by a licensed physician — target the root cause,
+                not just the surface symptoms.
+              </p>
+              <p className="text-sm text-primary-foreground/60 italic">
+                Nolique is a telehealth platform. All prescriptions are issued by
+                independent licensed physicians who review each patient's intake
+                individually.
               </p>
               <Button onClick={handleAction} variant="outline" className="rounded-full bg-transparent border-white text-white hover:bg-white hover:text-primary mt-4 hover:-translate-y-0.5 transition-all">
-                Get Approved
+                Submit Your Intake
               </Button>
             </motion.div>
             <motion.div
@@ -510,10 +219,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="relative"
             >
-              <img src={sciWoman} alt="Calm, even skin" className="w-3/4 rounded-2xl shadow-2xl relative z-10" />
-              <motion.img
-                src={sciTexture}
-                alt="Skin texture"
+              <img src={sciWoman} alt="Skin care" className="w-3/4 rounded-2xl shadow-2xl relative z-10" />
+              <motion.img src={sciTexture} alt="Skin texture"
                 className="w-1/2 rounded-2xl shadow-xl absolute -bottom-10 -right-4 border-8 border-primary object-cover aspect-square"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -523,51 +230,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. Pastel Stat Cards — count up */}
-      <section className="py-24 px-6 max-w-7xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="font-serif text-4xl md:text-5xl text-primary mb-16"
-        >
-          Why are so many patients signing up? <span className="text-brand italic">It works.</span>
-        </motion.h2>
-
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {[
-            { num: 91, suffix: "%", label: "Saw reduction in facial redness", bg: "bg-brand-light/30" },
-            { num: 9, suffix: "/10", label: "Patients switch from OTC", bg: "bg-[#e6efe9]" },
-            { num: 12, suffix: "w", label: "Average time to lasting calm", bg: "bg-[#f0e6e6]" },
-            { num: 24, suffix: "/7", label: "Dermatologist support", bg: "bg-[#fff3e0]" },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: EASE } },
-              }}
-              whileHover={{ scale: 1.04, y: -4, transition: { duration: 0.3 } }}
-            >
-              <Card className={`${stat.bg} border-none shadow-none rounded-3xl p-8 text-center h-full`}>
-                <h3 className="font-serif text-6xl text-primary mb-4">
-                  <CountUp to={stat.num} duration={2} suffix={stat.suffix} />
-                </h3>
-                <p className="text-foreground/70 font-medium">{stat.label}</p>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* 12. Timeline */}
+      {/* ── How it Works ───────────────────────────────────────────── */}
       <section id="how-it-works" className="py-24 bg-brand-light/20 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -577,9 +240,17 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h2 className="font-serif text-4xl md:text-5xl text-primary leading-tight">Begin your rosacea journey from home.</h2>
-            <p className="text-lg text-foreground/70">No waiting rooms. No pharmacy lines. Just expert care on your schedule.</p>
-            <Button onClick={handleAction} size="lg" className="rounded-full px-10 py-6 text-lg bg-primary mt-4 hover:-translate-y-0.5 transition-all">Get Approved</Button>
+            <h2 className="font-serif text-4xl md:text-5xl text-primary leading-tight">
+              How Nolique works.
+            </h2>
+            <p className="text-lg text-foreground/70">
+              We built a simple, secure path from your first question to your
+              first prescription — handled by real licensed physicians, not
+              algorithms.
+            </p>
+            <Button onClick={handleAction} size="lg" className="rounded-full px-10 py-6 text-lg bg-primary mt-4 hover:-translate-y-0.5 transition-all">
+              Get Started
+            </Button>
           </motion.div>
 
           <motion.div
@@ -590,13 +261,11 @@ export default function Home() {
             className="space-y-12 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-brand before:to-transparent"
           >
             {[
-              { num: "01", title: "Get Approved", desc: "Fill out a quick 3-minute medical intake form and upload skin photos.", img: timePhone },
-              { num: "02", title: "Get Prescribed", desc: "A board-certified dermatologist reviews and prescribes your rosacea treatment.", img: timeDoctor },
-              { num: "03", title: "Receive your Rx", desc: "Your customized treatment ships free to your door, every month.", img: timeBox },
+              { num: "01", title: "Complete Your Intake", desc: "Answer a short set of medical questions and upload photos of your skin. Takes about 3 minutes.", img: timePhone },
+              { num: "02", title: "Physician Review", desc: "An independent licensed physician reviews your intake and determines if prescription treatment is appropriate for you.", img: timeDoctor },
+              { num: "03", title: "Receive Your Treatment", desc: "If approved, your prescription is sent to a licensed pharmacy and shipped directly to your door.", img: timeBox },
             ].map((step, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
+              <motion.div key={i} variants={fadeUp}
                 className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
               >
                 <motion.div
@@ -618,7 +287,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 13. Support — twin-photo layout */}
+      {/* ── Support ────────────────────────────────────────────────── */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
@@ -629,13 +298,20 @@ export default function Home() {
             className="space-y-6 max-w-md"
           >
             <h2 className="font-serif text-4xl md:text-5xl text-primary leading-tight">
-              Unlimited 24/7 support <span className="text-brand italic">included.</span>
+              Questions along the way?{" "}
+              <span className="text-brand italic">We're here.</span>
             </h2>
             <p className="text-lg text-foreground/70 leading-relaxed">
-              Nolique provides 24/7 access to a dedicated team of dermatology specialists, ensuring you have the support you need <span className="text-brand font-semibold">around the clock</span>. With unlimited appointments, messaging and support, you can confidently reach out for guidance, ask questions, or address flare-ups any time.
+              The Nolique support team is available to help you navigate the
+              intake process, understand your treatment, or connect you with your
+              prescribing physician's office for medical questions.
+            </p>
+            <p className="text-sm text-foreground/50 italic">
+              Medical questions about your treatment are handled by the
+              prescribing physician's practice, not Nolique staff.
             </p>
             <Button onClick={handleAction} size="lg" className="rounded-full px-10 py-6 text-base bg-primary hover:-translate-y-0.5 transition-all">
-              <MessageCircle className="w-5 h-5 mr-2" /> Get Approved
+              <MessageCircle className="w-5 h-5 mr-2" /> Start Your Intake
             </Button>
           </motion.div>
 
@@ -647,13 +323,9 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-xl"
             >
-              <motion.img
-                src={sciWoman}
-                alt="Nolique dermatologist"
-                className="w-full h-full object-cover"
+              <motion.img src={sciWoman} alt="Physician" className="w-full h-full object-cover"
                 animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -662,49 +334,15 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-xl mt-12"
             >
-              <motion.img
-                src={supPair}
-                alt="Patient holding Nolique treatment"
-                className="w-full h-full object-cover"
+              <motion.img src={supPair} alt="Patient" className="w-full h-full object-cover"
                 animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 14. Testimonials — two rows, opposite directions */}
-      <section id="reviews" className="py-24 bg-background">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-7xl mx-auto text-center mb-16 px-6"
-        >
-          <h2 className="font-serif text-4xl md:text-5xl text-primary mb-6">There's a reason people are <span className="text-brand italic">raving about us.</span></h2>
-          <Button onClick={handleAction} className="rounded-full px-8 bg-brand hover:bg-brand/90 text-white hover:-translate-y-0.5 transition-all">I'M READY, LET'S GO</Button>
-        </motion.div>
-
-        <div className="space-y-6 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          {/* Top row — slides left */}
-          <Marquee duration={55} direction="left">
-            {TESTIMONIALS_TOP.map((review, i) => (
-              <TestimonialCard key={`top-${i}`} review={review} variant="light" />
-            ))}
-          </Marquee>
-
-          {/* Bottom row — slides right */}
-          <Marquee duration={60} direction="right">
-            {TESTIMONIALS_BOTTOM.map((review, i) => (
-              <TestimonialCard key={`bot-${i}`} review={review} variant="cream" />
-            ))}
-          </Marquee>
-        </div>
-      </section>
-
-      {/* 15. Quiz Card */}
+      {/* ── Quiz ───────────────────────────────────────────────────── */}
       <section className="py-24 px-6 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -714,11 +352,13 @@ export default function Home() {
         >
           <Card className="border border-border/50 shadow-2xl rounded-3xl overflow-hidden bg-white">
             <div className="bg-brand text-white p-6 text-center">
-              <h3 className="font-serif text-2xl">Let's build your rosacea routine</h3>
+              <h3 className="font-serif text-2xl">Is Nolique right for you?</h3>
+              <p className="text-white/80 text-sm mt-1">Answer one question to get started</p>
             </div>
             <CardContent className="p-8 md:p-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center mb-8">What is your primary skin concern?</h2>
-
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center mb-8">
+                What is your primary skin concern?
+              </h2>
               <motion.div
                 variants={stagger}
                 initial="hidden"
@@ -748,20 +388,22 @@ export default function Home() {
                   </motion.button>
                 ))}
               </motion.div>
-
               <Button
                 onClick={handleAction}
                 disabled={!quizSelection}
                 className="w-full rounded-full py-6 text-lg bg-primary hover:bg-primary/90 hover:-translate-y-0.5 transition-all"
               >
-                Get Approved
+                Continue to Intake Form
               </Button>
+              <p className="text-xs text-foreground/40 text-center mt-4">
+                Free to apply. A licensed physician will review your case.
+              </p>
             </CardContent>
           </Card>
         </motion.div>
       </section>
 
-      {/* 16. FAQ */}
+      {/* ── FAQ ────────────────────────────────────────────────────── */}
       <section id="faq" className="py-24 bg-brand-light/10 px-6">
         <div className="max-w-3xl mx-auto">
           <motion.h2
@@ -773,37 +415,47 @@ export default function Home() {
           >
             Frequently Asked Questions
           </motion.h2>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {[
-                { q: "What kinds of rosacea does Nolique treat?", a: "Our dermatologists treat all four rosacea subtypes: erythematotelangiectatic (redness & flushing), papulopustular (bumps & pustules), phymatous (skin thickening), and ocular rosacea symptoms. Your assessment will route you to the right protocol." },
-                { q: "Will it work for my sensitive skin?", a: "Yes. Our dermatologists customize the concentration and combination of active ingredients based on your skin's tolerance, so you can calm rosacea without burning, stinging, or making it worse." },
-                { q: "Do you accept insurance?", a: "While we don't bill insurance directly for the medications, our services are HSA/FSA eligible, and we provide receipts you can submit for reimbursement." },
-                { q: "What side effects should I expect?", a: "When starting prescription rosacea treatments, some patients experience mild dryness or temporary redness for 1-2 weeks. Your provider will guide you through minimizing these effects with the right barrier repair cream." },
-                { q: "How long until I see results?", a: "Many patients notice calmer skin within 2-4 weeks. Significant reduction in persistent redness and pustules typically becomes visible at the 8-12 week mark." },
-              ].map((faq, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <AccordionItem value={`item-${i}`} className="bg-white border border-border rounded-2xl px-6 data-[state=open]:border-brand transition-colors">
-                    <AccordionTrigger className="text-lg font-medium text-primary hover:no-underline py-6">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-foreground/70 pb-6 text-base leading-relaxed">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-              ))}
-            </Accordion>
-          </motion.div>
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {[
+              {
+                q: "Is Nolique a medical practice?",
+                a: "No. Nolique is a telehealth platform that connects patients with independent licensed physicians. Nolique does not practice medicine, provide medical advice, or employ physicians. All prescriptions are issued by independent licensed medical professionals.",
+              },
+              {
+                q: "Who reviews my intake form?",
+                a: "Your intake is reviewed by an independent licensed physician in your state. They determine whether prescription rosacea treatment is medically appropriate for you. Nolique facilitates the platform — the physician makes all clinical decisions.",
+              },
+              {
+                q: "What happens if I'm not approved?",
+                a: "If the reviewing physician determines that prescription treatment is not appropriate for your case, you will not be charged. The physician may recommend alternative next steps.",
+              },
+              {
+                q: "Do you accept insurance?",
+                a: "Nolique does not currently bill insurance directly. However, our services may be HSA/FSA eligible. We recommend checking with your benefits provider. We can provide receipts for potential reimbursement.",
+              },
+              {
+                q: "How long does physician review take?",
+                a: "Most intake forms are reviewed by a physician within 24–48 hours. You'll be notified by email once your case has been reviewed.",
+              },
+              {
+                q: "Is my medical information secure?",
+                a: "Yes. Nolique uses HIPAA-compliant systems to store and transmit your health information. Your data is never sold or shared with third parties outside of your care team.",
+              },
+            ].map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="bg-white border border-border rounded-2xl px-6 data-[state=open]:border-brand transition-colors">
+                <AccordionTrigger className="text-lg font-medium text-primary hover:no-underline py-6">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/70 pb-6 text-base leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
-      {/* 17. Value Props */}
+      {/* ── Value Props ────────────────────────────────────────────── */}
       <section className="py-16 border-t border-border px-6">
         <motion.div
           variants={stagger}
@@ -813,14 +465,12 @@ export default function Home() {
           className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
         >
           {[
-            { icon: ShieldCheck, label: "Money-back Guarantee" },
-            { icon: Truck, label: "Free 2-day Delivery" },
-            { icon: Stethoscope, label: "Doctor-led Plans" },
-            { icon: BadgeDollarSign, label: "No Hidden Fees" },
+            { icon: ShieldCheck, label: "HIPAA Compliant" },
+            { icon: Truck, label: "Free Shipping" },
+            { icon: Users, label: "Licensed Physicians" },
+            { icon: BadgeDollarSign, label: "HSA / FSA Eligible" },
           ].map((item, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
+            <motion.div key={i} variants={fadeUp}
               whileHover={{ y: -4, transition: { duration: 0.3 } }}
               className="flex flex-col items-center gap-4"
             >
@@ -832,31 +482,6 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
-    </div>
-  );
-}
-
-interface TestimonialCardProps {
-  review: { name: string; quote: string; img: string };
-  variant: "light" | "cream";
-}
-
-function TestimonialCard({ review, variant }: TestimonialCardProps) {
-  const bg = variant === "light" ? "bg-[#f3f1e8]" : "bg-[#f7eee5]";
-  return (
-    <div className={`${bg} mx-3 rounded-3xl p-8 w-[400px] shrink-0 shadow-sm`}>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <img src={review.img} alt={review.name} className="w-10 h-10 rounded-full object-cover" />
-          <p className="font-bold text-primary">{review.name}</p>
-        </div>
-        <div className="flex gap-0.5">
-          {[1, 2, 3, 4, 5].map((s) => (
-            <Star key={s} className="w-4 h-4 fill-brand text-brand" />
-          ))}
-        </div>
-      </div>
-      <p className="text-foreground/80 text-sm leading-relaxed">"{review.quote}"</p>
     </div>
   );
 }
